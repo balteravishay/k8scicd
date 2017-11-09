@@ -8,7 +8,7 @@ spec:
     metadata:
       labels:
         name: nginx
-        version: $RELEASE_ID
+        version: "$RELEASE_ID"
     spec:
       containers: 
         - name: nginx
@@ -30,4 +30,4 @@ spec:
       targetPort: 80
   selector: 
     name: nginx
-    version: $RELEASE_ID
+    version: "$RELEASE_ID"

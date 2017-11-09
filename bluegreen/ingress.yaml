@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress
+  labels:
+    tag: nginx$PREV_RELEASE_ID
+    state: bluegreen
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: nginx$PREV_RELEASE_ID
+          servicePort: 80
+      - path: /test
+        backend:
+          serviceName: nginx$RELEASE_ID
+          servicePort: 80

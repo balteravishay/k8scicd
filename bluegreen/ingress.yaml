@@ -3,7 +3,8 @@ kind: Ingress
 metadata:
   name: ingress
   labels:
-    tag: nginx$PREV_RELEASE_ID
+    tag: nginx
+    release: "$PREV_RELEASE_ID"
     state: bluegreen
   annotations:
     ingress.kubernetes.io/rewrite-target: /

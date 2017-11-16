@@ -1,0 +1,35 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nginx-9
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        name: nginx
+        release: "9"
+    spec:
+      containers: 
+        - name: nginx
+          image: nginx:1.10
+          ports:
+            - name: http
+              containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: nginx9
+  labels: 
+    release: "9"
+    name: nginx
+    serviceName: nginx9
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+  selector: 
+    name : nginx
+    release: "9"

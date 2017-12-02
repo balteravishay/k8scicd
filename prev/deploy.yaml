@@ -1,14 +1,14 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: nginx-110
+  name: nginx-0
 spec:
   replicas: 3
   template:
     metadata:
       labels:
         name: nginx
-        release: "1.10"
+        release: "0"
     spec:
       containers: 
         - name: nginx
@@ -20,11 +20,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata: 
-  name: nginx1.10
+  name: nginx0
   labels: 
-    release: "1.10"
+    release: "0"
     name: nginx
-    serviceName: nginx1.10
+    serviceName: nginx0
 spec:
   ports:
     - name: http
@@ -32,4 +32,4 @@ spec:
       targetPort: 80
   selector: 
     name : nginx
-    release: "1.10"
+    release: "0"

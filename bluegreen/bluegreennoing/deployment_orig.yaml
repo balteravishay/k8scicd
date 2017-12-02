@@ -1,14 +1,14 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: nginx-9
+  name: nginx-0
 spec:
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
         name: nginx
-        release: "9"
+        release: "0"
     spec:
       containers: 
         - name: nginx
@@ -20,16 +20,18 @@ spec:
 apiVersion: v1
 kind: Service
 metadata: 
-  name: nginx9
+  name: nginx
   labels: 
-    release: "9"
+    release: "0"
     name: nginx
-    serviceName: nginx9
+    serviceName: nginx0
+    state: blue
 spec:
+  type: LoadBalancer
   ports:
     - name: http
       port: 80
       targetPort: 80
   selector: 
     name : nginx
-    release: "9"
+    release: "0"

@@ -4,7 +4,7 @@ metadata:
   name: ingress
   labels:
     tag: nginx
-    release: "10"
+    release: "1.10"
     state: blue
   annotations:
     ingress.kubernetes.io/rewrite-target: /
@@ -14,6 +14,6 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: nginx10
+          serviceName: nginx1.10
           servicePort: 80
       

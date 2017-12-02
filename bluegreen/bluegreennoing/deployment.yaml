@@ -1,18 +1,18 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: nginx-10
+  name: $NAME-$RELEASE_ID
 spec:
-  replicas: 3
+  replicas: $REPLICA_COUNT
   template:
     metadata:
       labels:
-        name: nginx
-        release: "10"
+        name: $NAME
+        release: "$RELEASE_ID"
     spec:
       containers: 
-        - name: nginx
-          image: nginx:1.10
+        - name: $NAME
+          image: $IMAGE_NAME
           ports:
             - name: http
               containerPort: 80
@@ -20,16 +20,17 @@ spec:
 apiVersion: v1
 kind: Service
 metadata: 
-  name: nginx10
+  name: $NAME$RELEASE_ID-test
   labels: 
-    release: "10"
-    name: nginx
-    serviceName: nginx10
+    release: "$RELEASE_ID"
+    name: $NAME
+    serviceName: $NAME$RELEASE_ID
 spec:
+  type: LoadBalancer
   ports:
     - name: http
       port: 80
       targetPort: 80
   selector: 
-    name : nginx
-    release: "10"
+    name : $NAME
+    release: "$RELEASE_ID"

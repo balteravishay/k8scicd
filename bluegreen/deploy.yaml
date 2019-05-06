@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: $NAME-$RELEASE_ID
 spec:
-  replicas: $REPLICA_COUNT
+  replicas: $
   template:
     metadata:
       labels:

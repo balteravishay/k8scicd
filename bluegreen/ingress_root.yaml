@@ -4,7 +4,7 @@ metadata:
   name: ingress
   labels:
     tag: $NAME
-    release: "$RELEASE_ID"
+    release: 
     state: $STATE
   annotations:
     ingress.kubernetes.io/rewrite-target: /
